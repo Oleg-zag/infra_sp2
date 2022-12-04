@@ -1,9 +1,7 @@
 from rest_framework import serializers
-from reviews.models import Title, Genre, Category, Review, Comments
-from rest_framework.relations import SlugRelatedField
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import get_object_or_404
-from django.db.models import Avg, F
+from reviews.models import Category, Comments, Genre, Review, Title
 
 
 class GenreSerializer(serializers.ModelSerializer):
@@ -59,6 +57,7 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
         fields = '__all__'
+
 
 class TitleSerializer(serializers.ModelSerializer):
     genre = serializers.SlugRelatedField(
